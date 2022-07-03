@@ -1,0 +1,132 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pariwisata</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="index.html">Pariwisata</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+            
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="input-pariwisata.html">Input Pariwisata</a>
+                    </li>
+                </ul>
+            </div>
+            <form class="d-flex" role="search">
+                <input class="form-control me-2" type="search" 
+                    placeholder="Search" aria-label="Search">
+                <button class="btn btn-success" type="submit">
+                    Search</button>
+            </form>
+        </div>
+    </nav>
+
+    <div class="container">
+        <form class="row mt-3 g-2">
+            <div class="col-md-1">
+                <label for="daerah">Daerah</label>
+            </div>
+            <div class="col-md-3">
+                <select name="" id="slctDaerah" class="form-control">
+                    <option value="samosir">Samosir</option>
+                    <option value="karo">Karo</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="row g-2" id="list-pariwisata">
+           <!-- <div class="col-md-4">
+                <div class="card mt-3">
+                    <img src="img/danau_toba.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">Danau Toba</h5>
+                    <p class="card-text">Danau Toba adalah sebuah Pariwisata mengelilingi pulau samosir...</p>
+                    <a href="detail_pariwisata.html" class="btn btn-primary">Selengkapnya</a>
+                    </div>
+                </div>
+              </div>
+               -->       
+     
+        </div>
+        </div>
+    </a>
+        </div>
+    </div>
+</div>
+    <script>
+        const pariwisata = JSON.parse(localStorage.getItem("pariwisata"));
+
+        function tampilPariwisataByDaerah(daerah){
+            const listDaerah = document.getElementById("list-pariwisata");
+
+            listPariwisata.innerHTML = "";
+
+            pariwisata
+            .filter(pariwisata => pariwisata.daerah.indexOf(daerah) > -1)
+            .map(pariwisata => {
+                listPariwisata.innerHTML += `
+                    <div class="col-md-3">                   
+                        <a href="detail-pariwisata.html?nama=${pariwisata.nama.toLowerCase().replaceAll(' ','_')}" class="text-decoration-none text-dark">
+                            <div class="card">
+                            <img src="./images/${pariwisata.nama.toLowerCase().replaceAll(' ','_')}.jpeg" 
+                             class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title">${pariwisata.nama}</h5>
+                                </div>
+                                <div class="card-body d-flex justify-content-center">
+                                    <h5><span class="badge bg-${pariwisata.bintang==="5"?"primary":"danger"}">${pariwisata.bintang}</span></h5>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                `;
+            })
+            };
+
+        document.addEventListener("DOMContentLoaded",function(){
+            tampilPariwisataByDaerah("samosir");
+
+        });
+        document.getElementById("slctDaerah")
+            .addEventListener("change",function(event){
+            tampilPariwisataByDaearah(event.target.value);
+        });
+    </script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+</body>
+</html>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
